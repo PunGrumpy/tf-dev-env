@@ -30,4 +30,9 @@ wget -nv -t3 -P OpenSDN-io/tf-third-party-cache/raw/master/cassandra https://git
 wget -nv -t3 -P OpenSDN-io/tf-third-party-cache/raw/master/kafka     https://github.com/OpenSDN-io/tf-third-party-cache/raw/master/kafka/kafka_2.11-2.3.1.tgz
 wget -nv -t3 -P OpenSDN-io/tf-third-party-cache/raw/master/redis     https://github.com/OpenSDN-io/tf-third-party-cache/raw/master/redis/redis-2.6.13.tar.gz
 
+# juju for tf-devstack (may be unreachable from Russia — keep in SITE_MIRROR)
+wget -nv -t3 -P juju/2.9/2.9.49/+download https://launchpad.net/juju/2.9/2.9.49/+download/juju-2.9.49-linux-amd64.tar.xz
+# cloud-init for tf-jenkins ubuntu worker (may be unreachable from Russia — keep in SITE_MIRROR)
+wget -nv -t3 -P 713462297 http://launchpadlibrarian.net/713462297/cloud-init_23.4.3-0ubuntu0~22.04.1_all.deb
+
 popd
