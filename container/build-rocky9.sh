@@ -4,8 +4,8 @@ if ! dnf info git-review ; then
   dnf -y install epel-release
 fi
 
-if [ -f /etc/dnf.repos.d/pip.conf ] ; then
-  mv /etc/dnf.repos.d/pip.conf /etc/
+if [ -f /etc/yum.repos.d/pip.conf ] ; then
+  mv /etc/yum.repos.d/pip.conf /etc/
 fi
 
 # userspace-rcu is available in crb repo
