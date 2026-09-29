@@ -11,8 +11,8 @@ function mysudo() {
     fi
 }
 
-LINUX_DISTR=${LINUX_DISTR:-'rockylinux'}
-LINUX_DISTR_VER=${LINUX_DISTR_VER:-9}
+LINUX_DISTR=${LINUX_DISTR:-'rockylinux/rockylinux'}
+LINUX_DISTR_VER=${LINUX_DISTR_VER:-9.8}
 
 CONTRAIL_KEEP_LOG_FILES=${CONTRAIL_KEEP_LOG_FILES:-'false'}
 
@@ -23,7 +23,7 @@ echo "Building tf-dev-env image: ${DEVENV_IMAGE}" | tee $logfile
 build_opts="--build-arg LC_ALL=en_US.UTF-8 --build-arg LANG=en_US.UTF-8 --build-arg LANGUAGE=en_US.UTF-8"
 build_opts+=" --build-arg LINUX_DISTR=$LINUX_DISTR --build-arg LINUX_DISTR_VER=$LINUX_DISTR_VER"
 build_opts+=" --build-arg SITE_MIRROR=${SITE_MIRROR:+${SITE_MIRROR}/external-web-cache}"
-if [[ "$LINUX_DISTR" =~ 'rocky' ]] ; then
+if [[ "$LINUX_DISTR" =~ 'rockylinux' ]] ; then
     docker_file="Dockerfile.rocky"
 else
     echo "ERROR: unsupported linux distro: $LINUX_DISTR"
