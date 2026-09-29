@@ -26,7 +26,8 @@ function install_docker_ubuntu() {
   apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   add-apt-repository -y -u "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  retry apt-get install -y "docker-ce=5:24.0.6-1~ubuntu.20.04~focal"
+  local docker_version="5:24.0.6-1~ubuntu.$(lsb_release -rs)~$(lsb_release -cs)"
+  retry apt-get install -y "docker-ce=$docker_version" "docker-ce-cli=$docker_version"
 }
 
 function install_docker_centos() {
