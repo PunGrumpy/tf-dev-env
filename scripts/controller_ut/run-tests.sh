@@ -18,6 +18,10 @@ mkdir -p "$dump_path"
 # see e.g.: https://github.com/Juniper/contrail-analytics/blob/b488e3cd608643ae5dd1e0dcbc03c9e8768178ce/contrail-opserver/alarmgen.py#L872
 bash -c 'echo "127.0.0.1 localhost" > /etc/hosts'
 bash -c 'echo "::1 localhost" >> /etc/hosts'
+# keep the hostname resolvable locally, otherwise DNS search domains of the host
+# turn it into e.g. 'host.local' and hostname checks in tests fail
+host_ip=$(ip -4 route get 1.1.1.1 2>/dev/null | awk '{for (i = 1; i < NF; i++) if ($i == "src") print $(i + 1)}')
+[[ -n "$host_ip" ]] && echo "$host_ip $(hostname)" >> /etc/hosts
 
 # pip==20.3.1 has issues with installing packages. looks like new resolver is broken for python3.6
 # let's pin old version to avoid such issues
