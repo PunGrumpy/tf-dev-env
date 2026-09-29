@@ -49,6 +49,10 @@ git config --get user.email >/dev/null 2>&1 || git config --global user.email "t
 
 git config --global http.postBuffer 524288000
 
+# sources are bind-mounted from the host and owned by the host user,
+# so git (run as root here) rejects them as dubious ownership
+git config --global --get-all safe.directory | grep -qxF '*' || git config --global --add safe.directory '*'
+
 # temporary hack for expired SSL certs at review.opencontrail.org
 # git config --global http.sslVerify false
 
